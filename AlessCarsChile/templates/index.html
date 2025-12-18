@@ -1,0 +1,174 @@
+<!--este es mi index BASE/PADRE-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">                  <!--MODIFICAR URLS Y DIRECCIONES-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block titulo %} Aless Cars Chile {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/estilos.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <!--BARRA PRINCIPAL-->
+    <header class="encab">
+        <div class="barra container">
+            <img src="{%static 'imagenes/imagen1.png' %}" alt="Logo Aless Cars" class="logo" />
+            <nav class="navbar">
+                <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link" href="{% url 'servicios' %}">Servicios</a>
+            </nav>
+        </div>
+    </header>
+
+    <!--Centro de pagina y registro-->
+    <section class="principal"> <!--VER COMO INSERTAR IMAGEN DE FONDO-->
+        <div class="centro">
+            <h1 class="titulo-principal">ALESS CARS CHILE</h1>
+            <p class="subtitulo-principal">Especialistas en estética automotriz, detallado y protección profesional.</p>
+            <a href="{% url 'logear' %}" class="nav-link">Iniciar sesion</a>
+        </div>
+    </section>
+
+    <!--descripción y carrucel-->
+    <section class="servi">
+        <h2>¿Qué ofrecemos?</h2>
+        <div class="carousel-inner" style="max-width: 800px; margin: auto;">
+            <!--permite ajustar las imagenes y estar limitadas-->
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="{% static 'imagenes/lavdo2.png' %}" class="d-block w-100 carrusel-img"
+                        alt="Lavado Detailing">
+                    <div class="text-center pt-3">
+                        <h3>Lavado Detailing</h3>
+                        <p>Exterior con productos premium.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'imagenes/mini.png' %}" class="d-block w-100 carrusel-img"
+                        alt="Sellado de Cerámico">
+                    <div class="text-center pt-3">
+                        <h3>Sellado de Cerámico</h3>
+                        <p>Acabado showroom y durabilidad extendida.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'imagenes/pulido6.png' %}" class="d-block w-100 carrusel-img"
+                        alt="Pulido Profesional">
+                    <div class="text-center pt-3">
+                        <h3>Pulido Profesional</h3>
+                        <p>Elimina rayas, marcas y recupera el brillo.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+
+    <!--más de nosotros-->
+    <section class="mas-de-nosotros">
+        <div class="container">
+            <h2 class="mb-4">MÁS DE NOSOTROS</h2>
+            <p class="lead">
+                En Aless Cars Chile, no solo nos dedicamos al cuidado estético de tu vehículo,
+                también valoramos la confianza, la calidad y la experiencia de nuestros clientes.
+                Somos un equipo apasionado por los autos, comprometido con la excelencia
+                y el detalle en cada servicio que ofrecemos.
+            </p>
+
+            <div class="row mt-5 g-4">
+                <div class="col-md-4">
+                    <img src="{%static 'imagenes/lavado3.jpg' %}" alt="Nuestro equipo"
+                        class="img-fluid rounded mb-3 tarjeta-img">
+                    <h5>Equipo Profesional</h5>
+                    <p>Contamos con personal capacitado en técnicas avanzadas de detallado automotriz.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <img src="{% static 'imagenes/equipo1.jpg' %}" alt="Tecnología"
+                        class="img-fluid rounded mb-3 tarjeta-img">
+                    <h5>Tecnología de Punta</h5>
+                    <p>Usamos productos y equipos de última generación para el mejor resultado.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <img src="{% static 'imagenes/clisatisfecho.jpg' %}" alt="Clientes felices"
+                        class="img-fluid rounded mb-3 tarjeta-img">
+                    <h5>Clientes Satisfechos</h5>
+                    <p>Más de 1.000 clientes felices respaldan nuestro compromiso con la excelencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="lugar" class="py-5" aria-labelledby="tit-lugar">
+        <div class="container">
+            <h2 id="tit-ubi" class="mb-3">¿Donde estamos Ubicados?</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <iframe
+                        src="https://www.google.com/maps?q=Aless%Cars%Chile%-%PULIDOS%-%SELLADO%DE%CERAMICOS%-%PINTURA%Y%DESABOLLADURA%AUTOMOTRIZ.%Padre%Hurtado,%Santiago,%Chile&output=embed"
+                        width="400" height="400" style="border:0; border-radius:10px;" allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+                <div class="col-md-6 info-contacto">
+                    <p class="visita">INFORMACIÓN</p>
+                    <p style="font-family: 'Courier New', Courier, monospace;">Para Más imformación no dudes en
+                        contactarte con nosotros</p>
+                    <div class="mb-3">
+                        <p class="fw-bold m-0">Horarios:</p>
+                        <p class="m-0">Lun–Jue 09:00–19:00</p>
+                        <p class="m-0">Vie–Sáb 09:00–15:00</p>
+                        <p class="m-0">Domingos Cerrado</p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="fw-bold m-0">Correo:</p>
+                        <p class="m-0">
+                            <a href="mailto:Alesscarschile@gmail.com"
+                                class="text-decoration-none">Alesscarschile@gmail.com</a><br>
+                            <a href="mailto:celisnicolas533@gmail.com"
+                                class="text-decoration-none">celisnicolas533@gmail.com</a>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="fw-bold m-0">Teléfono:</p>
+                        <p class="m-0">
+                            <a href="tel:+56966954758" class="text-decoration-none">+56 9 6695 4758</a>
+                        </p>
+                    </div>
+                </div>
+    </section>
+    <!-- PIE DE PÁGINA -->
+    <footer class="piedepagina">
+        <p>&copy; 2025 Aless Cars Chile - Todos los derechos reservados.</p>
+        <div class="RRSS">
+            <a href="https://www.facebook.com/share/18tEqyjW8C/">Facebook</a> |
+            <a href="https://www.instagram.com/alesscars_chile">Instagram</a>
+        </div>
+    </footer>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-12'>
+                    <br>
+                    {% block contenido %}  {% endblock %}
+                </div>
+            </div>
+        </div>
+    <script src="JAVASCRIPT/codigodevalidacion.js"></script>
+</body>
+
+</html>

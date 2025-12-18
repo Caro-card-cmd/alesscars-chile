@@ -1,0 +1,115 @@
+<!--PAGINA DE GESTION DE CREAR SERVICIOS-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block titulo %} Gestion {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/estilos.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+<body>
+    <!-- BARRA PRINCIPAL -->
+    <header class="encab">
+        <div class="barra container d-flex justify-content-between align-items-center">
+            <img src="{% static 'imagenes/imagen1.png' %}" alt="Logo Aless Cars" class="logo" />
+            <nav class="navbar">
+                <a class="nav-item nav-link" href="{% url 'index' %}">Inicio</a>
+                <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link text-danger fw-bold" href="{% url 'exit' %}">Cerrar sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <h3>Bienvenido {{ user.username }}</h3>
+        <section id="gestionservicios" class="py-4 text-center">
+            <h2 class="text-center mb-4 text-danger">Gestión de Servicios</h2>
+
+            <!-- BOTÓN CREAR SERVICIO -->
+            <div class="text-start mb-4">
+                <a class="btn btn-success" href="{% url 'crear_servicio' %}">
+                    Agregar nuevo servicio
+                </a>
+            </div>
+
+            <!-- TABLA DE SERVICIOS -->
+            <div class="shadow p-3 rounded bg-white">
+                <table class="table table-striped table-bordered align-middle">
+                    <thead class="table-dark"> <!--thead, define el encabezado de la tabla-->
+                        <tr> <!--tabla de gestion donde se guardan los datos-->
+                            <th>Nombre del Servicio</th>
+                            <th>Marca</th>  <!--encabezados-->
+                            <th>Modelo</th>
+                            <th>Descripción</th>
+                            <th>Fecha</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr> <!--filas-->
+                    </thead>
+                    <tbody>
+                        {% for s in servicios %}   <!--el inicio de un bucle y permite generar lineas de servicios en la tabla-->
+                        <tr>    <!--lo que muestra la tabla-->
+                            <td>{{ s.servicio }}</td>  <!--s. representa el dato del objeto que seria solo 1 servicio-->
+                            <td>{{ s.marca }}</td>
+                            <td>{{ s.modelo }}</td>
+                            <td>{{ s.descripcion }}</td>
+                            <td>{{ s.fecha }}</td>
+                            <td>   <!--blocke que muestra la imagen cargada-->
+                                {% if s.imagen %}
+                                <img src="{{ s.imagen.url }}" alt="imagen servicio" width="90" height="80"
+                                    class="rounded">
+                                {% else %}
+                                <span class="text-muted">Sin imagen</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'editar_servicio' s.id %}" class="btn btn-warning btn-sm">Editar</a>
+
+                                <a href="{% url 'eliminar_servicio' s.id %}" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('¿Seguro que deseas eliminar este servicio?');">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}   <!--esta dentro del bucle, se ejecuta cuando la lista de servicios no continene ningun registro-->
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">No hay servicios registrados aún.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+        <div class="text-center mt-4">
+            <a href="{% url 'gracias' %}" class="btn btn-primary btn-lg">
+                Enviar Agenda
+            </a>
+        </div>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer class="piedepagina">
+        <p>&copy; 2025 Aless Cars Chile - Todos los derechos reservados.</p>
+        <div class="RRSS">
+            <a href="https://www.facebook.com/share/18tEqyjW8C/">Facebook</a> |
+            <a href="https://www.instagram.com/alesscars_chile">Instagram</a>
+        </div>
+    </footer>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12'>
+                <br>
+                {% block contenido %} {% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="JAVASCRIPT/codigodevalidacion.js"></script>
+</body>
+
+</html>

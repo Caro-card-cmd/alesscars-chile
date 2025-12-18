@@ -1,0 +1,132 @@
+<!--pagina de servicios es mi index.html de mi CRUD 'Libreria'-->
+<!--EDITAR PAGINA-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es"> <!--MODIFICAR URLS Y DIRECCIONES-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block titulo %} Servicios {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/estilos.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+<body>
+    <!--BARRA PRINCIPAL-->
+    <header class="encab">
+        <div class="barra container">
+            <img src="{%static 'imagenes/imagen1.png' %}" alt="Logo Aless Cars" class="logo" />
+            <nav class="navbar">
+                <a class="nav-item nav-link" href="{% url 'index' %}">Inicio</a>
+                <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link" href="{% url 'servicios' %}">Servicios</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO SERVICIOS -->
+    <main>
+        <section class="contenido-servicios container py-5">
+            <h1 class="text-center mb-5">Nuestros Servicios</h1>
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <!--Editar para que al hacer clic en la imagen, se direccione a iniciar session-->
+                        <img src="{%static 'imagenes/mini.png' %}" alt="Sellado de Cerámico">
+                        <h3>Sellado de Cerámico</h3>
+                        <p>Protege la pintura contra el sol, la lluvia y la suciedad con acabados showroom.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/ceramico.jpg' %}" alt="Pulido Profesional">
+                        <h3>Pulido Profesional</h3>
+                        <p>Elimina rayas superficiales, opacidad y marcas, restaurando el brillo original de tu auto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/pintura.jpg' %}" alt="Pintura de Carrocería Profesional">
+                        <h3>Pintura de Carrocería Profesional</h3>
+                        <p>Repara, renueva o cambia el color de tu vehículo con el servicio de pintura automotriz.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/desabolladura.jpg' %}" alt="Desabolladura">
+                        <h3>Desabolladura</h3>
+                        <p>Repara abolladuras o deformaciones en las piezas de la carrocería de un vehículo.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/lavado.jpg' %}" alt="Lavado Completo">
+                        <h3>Lavado Completo</h3>
+                        <p>Incluye limpieza profunda exterior e interior, aspirado, limpieza de llantas y cristales.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/focos.jpg' %}" alt="Restauración de Focos">
+                        <h3>Restauración de Focos</h3>
+                        <p>Elimina manchas, rayones y opacidad, devolviendo el brillo y claridad a los focos.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/motor.jpg' %}" alt="Lavado de Motor">
+                        <h3>Lavado de Motor</h3>
+                        <p>Limpieza detallada del compartimiento del motor con productos seguros y controlados.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/ozono.jpg' %}" alt="Sanitización con Ozono">
+                        <h3>Sanitización con Ozono</h3>
+                        <p>Elimina olores, bacterias y virus del habitáculo con tecnología de ozono certificada.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="servicio-item h-100">
+                        <img src="{%static 'imagenes/tapiz2.jpg' %}" alt="Tapicería">
+                        <h3>Tapicería</h3>
+                        <p>Limpieza interior completa, eliminación de manchas difíciles y acondicionamiento de
+                            materiales.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer class="piedepagina">
+        <p>&copy; 2025 Aless Cars Chile - Todos los derechos reservados.</p>
+        <div class="RRSS">
+            <a href="https://www.facebook.com/share/18tEqyjW8C/">Facebook</a> |
+            <a href="https://www.instagram.com/alesscars_chile">Instagram</a>
+        </div>
+    </footer>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12'>
+                <br>
+                {% block contenido %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

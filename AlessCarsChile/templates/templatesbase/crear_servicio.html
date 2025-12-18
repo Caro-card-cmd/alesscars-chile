@@ -1,0 +1,26 @@
+{% extends "templatesbase/base_gestion.html" %}
+
+{% block titulo %} Crear Servicio {% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-5 col-6">
+    <div class="card shadow">
+        <div class="card-header bg-danger text-white">
+            <h4>Agregar nuevo servicio</h4>
+        </div>
+
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ formulario.as_p }}
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a href="{% url 'gestion' %}" class="btn btn-secondary">Volver</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,93 @@
+<!--PAGINA DE NOSOTROS-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es"> <!--MODIFICAR URLS Y DIRECCIONES-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block titulo %} Nosotros {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/estilos.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+<body>
+    <!--BARRA PRINCIPAL-->
+    <header class="encab">
+        <div class="barra container">
+            <img src="{%static 'imagenes/imagen1.png' %}" alt="Logo Aless Cars" class="logo" />
+            <nav class="navbar">
+                <a class="nav-item nav-link" href="{% url 'index' %}">Inicio</a>
+                <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link" href="{% url 'servicios' %}">Servicios</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <section class="contenido-nosotros container py-5">
+            <div class="col-md-5">
+                <img src="{%static 'imagenes/pulido3.jpg' %}" class="img-fluid rounded sombra-img" alt="Pulido de auto">
+            </div>
+            <h1 class="text-center mb-4">Sobre Aless Cars Chile</h1>
+            <p class="text-justify">
+                Aless Cars Chile es una empresa especializada en estética automotriz con más de 5 años de experiencia en
+                el rubro.
+                Nuestro compromiso es brindar servicios de limpieza, protección y embellecimiento profesional para
+                vehículos
+                particulares, comerciales y de alta gama.
+            </p>
+
+            <h2 class="mt-5">Nuestra Misión</h2>
+            <p>
+                Ofrecer a nuestros clientes una experiencia única de cuidado vehicular mediante el uso de productos de
+                alta calidad,
+                tecnología de punta y atención personalizada que garantice resultados impecables.
+            </p>
+
+            <h2 class="mt-4">Nuestra Visión</h2>
+            <p>
+                Ser reconocidos a nivel nacional como líderes en el área de detallado automotriz, destacándonos por la
+                excelencia de
+                nuestros servicios, la innovación continua y la confianza que generamos en nuestros clientes.
+            </p>
+
+            <h2 class="mt-4">Valores Corporativos</h2>
+            <ul>
+                <li><strong>Calidad:</strong> Comprometidos con resultados sobresalientes en cada servicio.</li>
+                <li><strong>Confianza:</strong> Transparencia, cumplimiento y responsabilidad.</li>
+                <li><strong>Innovación:</strong> Aplicamos técnicas modernas y sustentables.</li>
+                <li><strong>Pasión por los autos:</strong> Nos apasiona cuidar cada vehículo como si fuera propio.</li>
+            </ul>
+
+            <h2 class="mt-4">¿Por qué elegirnos?</h2>
+            <p>
+                Porque en Aless Cars Chile combinamos experiencia, productos de primera línea y un equipo técnico
+                capacitado que se
+                preocupa de cada detalle. Además, contamos con servicios móviles y agendamiento online para mayor
+                comodidad.
+            </p>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer class="piedepagina">
+        <p>&copy; 2025 Aless Cars Chile - Todos los derechos reservados.</p>
+        <div class="RRSS">
+            <a href="https://www.facebook.com/share/18tEqyjW8C/">Facebook</a> |
+            <a href="https://www.instagram.com/alesscars_chile">Instagram</a>
+        </div>
+    </footer>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12'>
+                <br>
+                {% block contenido %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

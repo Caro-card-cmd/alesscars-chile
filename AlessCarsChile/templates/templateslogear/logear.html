@@ -1,0 +1,81 @@
+<!--PAGINA PARA INICIAR SESSION-->
+<!--EDITAR!!!-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es"> <!--MODIFICAR URLS Y DIRECCIONES-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block titulo %} Logear {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'CSS/estilos.css' %}" />
+
+    <!--CONEXION A Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--BARRA PRINCIPAL-->
+    <header class="encab">
+        <div class="barra container">
+            <img src="{%static 'imagenes/imagen1.png' %}" alt="Logo Aless Cars" class="logo" />
+            <nav class="navbar">
+                <a class="nav-item nav-link" href="{% url 'index' %}">Inicio</a>
+                <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link" href="{% url 'servicios' %}">Servicios</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FORMULARIO LOGIN --> <!--REVISAR NOMBRE Y CONTRASEÑA PREDETERMINADA-->
+    <main>
+        <section class="container py-5" style="max-width: 500px; text-align: center;">
+            <h2 class="text-center mb-4">Iniciar Sesión</h2>
+            <form id="loginForm" class="shadow p-4 rounded bg-white" action="{% url 'logear' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" required />
+                </div>
+                <div class="mb-3">
+                    <label for="clave" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="clave" name="clave" required />
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+                <button type="submit" class="button w-100">Ingresar</button>
+            </form>
+            <p class="text-center mt-3">
+                ¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a>
+            </p>
+        </section>
+
+
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer class="piedepagina">
+        <p>&copy; 2025 Aless Cars Chile - Todos los derechos reservados.</p>
+        <div class="RRSS">
+            <a href="https://www.facebook.com/share/18tEqyjW8C/">Facebook</a> |
+            <a href="https://www.instagram.com/alesscars_chile">Instagram</a>
+        </div>
+    </footer>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12'>
+                <br>
+                {% block contenido %} {% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="../JAVASCRIPT/logear.js"></script>
+</body>
+
+</html>
